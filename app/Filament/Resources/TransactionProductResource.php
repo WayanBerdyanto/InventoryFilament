@@ -17,7 +17,9 @@ class TransactionProductResource extends Resource
 {
     protected static ?string $model = TransactionProduct::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-s-truck';
+
+    protected static ?string $navigationLabel = 'Transactions';
 
     public static function form(Form $form): Form
     {
