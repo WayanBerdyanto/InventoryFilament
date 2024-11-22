@@ -18,6 +18,8 @@ class TransactionProduct extends Model
         'harga_total',
         'status_pembayaran',
         'metode_pembayaran',
+        'tanggal_transaksi',
+        'tanggal_selesai',
         'status_transaksi',
         'alamat_pengiriman',
     ];
@@ -27,7 +29,7 @@ class TransactionProduct extends Model
      */
     public function customer()
     {
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class, 'customer_id');
     }
 
     /**
@@ -35,6 +37,6 @@ class TransactionProduct extends Model
      */
     public function produk()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'produk_id');
     }
 }

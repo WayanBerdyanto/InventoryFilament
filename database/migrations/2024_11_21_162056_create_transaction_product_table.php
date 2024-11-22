@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('transaction_product', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->constrained('customers')->onDelete('cascade'); 
-            $table->foreignId('produk_id')->constrained('products')->onDelete('cascade'); 
-            $table->integer('jumlah'); 
-            $table->decimal('harga_total', 15, 2);
-            $table->enum('status_pembayaran', ['pending', 'paid', 'failed'])->default('pending'); 
-            $table->string('metode_pembayaran')->nullable(); 
-            $table->enum('status_transaksi', ['in_process', 'shipped', 'completed', 'cancelled'])->default('in_process'); 
-            $table->text('alamat_pengiriman')->nullable(); 
+            $table->foreignId('customer_id')->constrained();
+            $table->foreignId('produk_id')->constrained('products');  // adjust table name if different
+            $table->integer('jumlah');
+            $table->decimal('harga_total', 10, 2);
+            $table->string('status_pembayaran');  // Make sure it's string type
+            $table->string('metode_pembayaran');  // Make sure it's string type
+            $table->date('tanggal_transaksi');
+            $table->date('tanggal_selesai');
+            $table->string('status_transaksi');   // Make sure it's string type
             $table->timestamps();
         });
     }
